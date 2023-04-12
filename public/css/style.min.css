@@ -1375,7 +1375,6 @@ input[type="search"]::-webkit-search-results-decoration {
     left: 0px;
     border-radius: 16px;
     transition: 0.3s;
-    height: 100%;
 }
 .product-card:hover {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 15%);
@@ -2682,14 +2681,8 @@ input[type="search"]::-webkit-search-results-decoration {
     margin-bottom: 80px;
 }
 .report-content {
-  margin-top: 32px;
-  color: #1d1d1d;
+    margin-top: 32px;
 }
-
-.report-content p {
-  margin: 14px 0;
-}
-
 .reports-carousel .owl-nav,
 .reports-carousel .owl-dots {
     display: none;

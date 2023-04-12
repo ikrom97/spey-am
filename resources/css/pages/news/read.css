@@ -17,8 +17,14 @@
     margin-bottom: 80px;
 }
 .report-content {
-    margin-top: 32px;
+  margin-top: 32px;
+  color: #1d1d1d;
 }
+
+.report-content p {
+  margin: 14px 0;
+}
+
 .reports-carousel .owl-nav,
 .reports-carousel .owl-dots {
     display: none;

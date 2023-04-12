@@ -164,11 +164,9 @@ if (footer) {
   !*** ./resources/js/auth/login.js ***!
   \************************************/
 var loginPage = document.querySelector('.login-page');
-
 if (loginPage) {
   var visibilityBtn = loginPage.querySelector('.login-eye-btn'),
-      passwordInput = loginPage.querySelector('#password');
-
+    passwordInput = loginPage.querySelector('#password');
   visibilityBtn.onclick = function () {
     if (visibilityBtn.classList.contains('show')) {
       visibilityBtn.classList.remove('show');
@@ -601,7 +599,6 @@ if (productsPage) {
   !*** ./resources/js/pages/products/read.js ***!
   \*********************************************/
 var productPage = document.querySelector('[data-id="products-read-page"]');
-
 if (productPage) {
   var search = function search(page, keyword, filter, category) {
     $.ajax({
@@ -619,11 +616,9 @@ if (productPage) {
     });
   }; //! product-search section start */
   //* search start
-
-
   var infoSection = productPage.querySelector('[data-id="product-info"]'),
-      dropdownItems = infoSection.querySelectorAll('[data-type="dropdown-item"]'); //! product-info section
-
+    dropdownItems = infoSection.querySelectorAll('[data-type="dropdown-item"]');
+  //! product-info section
   dropdownItems.forEach(function (item) {
     item.addEventListener('click', function (e) {
       if (e.target.dataset.type == 'dropdown-btn') {
@@ -644,27 +639,24 @@ if (productPage) {
     });
   });
   var page = 1,
-      keyword = '',
-      filter = 'all',
-      category = productPage.querySelector('[data-id="current-category"]').value;
-
+    keyword = '',
+    filter = 'all',
+    category = productPage.querySelector('[data-id="current-category"]').value;
   if (category == 'null') {
     category = null;
   }
-
   var productSearchSection = productPage.querySelector('[data-id="product-search"]'),
-      prodCategoriesWrap = productSearchSection.querySelector('[data-id="products-categories"]'),
-      categoryLinks = productSearchSection.querySelectorAll('[data-name="category-link"]'),
-      searchSubmitBtn = productSearchSection.querySelector('[data-id="search-submit-btn"]'),
-      searchInput = productSearchSection.querySelector('[data-id="search-input"]'),
-      productsSection = productPage.querySelector('[data-id="products-section"]'),
-      filterWrap = productSearchSection.querySelector('[data-id="product-filter"]'),
-      filterLinks = filterWrap.querySelectorAll('[data-action="filter"]'),
-      body = document.querySelector('body');
+    prodCategoriesWrap = productSearchSection.querySelector('[data-id="products-categories"]'),
+    categoryLinks = productSearchSection.querySelectorAll('[data-name="category-link"]'),
+    searchSubmitBtn = productSearchSection.querySelector('[data-id="search-submit-btn"]'),
+    searchInput = productSearchSection.querySelector('[data-id="search-input"]'),
+    productsSection = productPage.querySelector('[data-id="products-section"]'),
+    filterWrap = productSearchSection.querySelector('[data-id="product-filter"]'),
+    filterLinks = filterWrap.querySelectorAll('[data-action="filter"]'),
+    body = document.querySelector('body');
   searchSubmitBtn.addEventListener('click', function (e) {
     e.preventDefault();
   });
-
   searchInput.onkeyup = function (e) {
     e.preventDefault();
     page = 1;
@@ -684,55 +676,48 @@ if (productPage) {
       link.classList.remove('current');
     });
     search(page, keyword, filter, category);
-  }; //* search end
+  };
+  //* search end
   //* filter start
-
-
   filterWrap.addEventListener('click', function (e) {
     filterLinks.forEach(function (link) {
       link.classList.remove('current');
     });
     e.target.classList.add('current');
     var productFilter = e.target.dataset.filter;
-
     switch (productFilter) {
       case 'with-recipe':
         filterWrap.classList.remove('without-recipe');
         filterWrap.classList.add('with-recipe');
         filter = 'with-recipe';
         break;
-
       case 'without-recipe':
         filterWrap.classList.remove('with-recipe');
         filterWrap.classList.add('without-recipe');
         filter = 'without-recipe';
         break;
-
       default:
         filterWrap.classList.remove('with-recipe');
         filterWrap.classList.remove('without-recipe');
         filter = 'all';
         break;
     }
-
     page = 1;
     search(page, keyword, filter, category);
-  }); //* filter end
+  });
+  //* filter end
   //* categories start
-
   body.addEventListener('click', function (e) {
     if (e.target.dataset.action == 'categories-btn') {
       prodCategoriesWrap.classList.toggle('hidden');
     } else if (e.target.dataset.type == 'category') {
       e.preventDefault();
-
       if (category == e.target.dataset.category) {
         category = null;
         ;
       } else {
         category = e.target.dataset.category;
       }
-
       page = 1;
       categoryLinks.forEach(function (link) {
         if (link.dataset.category == category) {
@@ -742,7 +727,6 @@ if (productPage) {
         }
       });
       search(page, keyword, filter, category);
-
       if (window.screen.width > 1299) {
         var scrollToEl = productSearchSection.querySelector('#products');
         scrollToEl.scrollIntoView();
@@ -767,28 +751,27 @@ if (productPage) {
       keyword = '';
       productsSection.style.marginTop = '0px';
     }
-
     if (e.target.dataset.type != 'dropdown-btn') {
       dropdownItems.forEach(function (item) {
         item.classList.remove('hidden');
         item.classList.remove('show');
       });
     }
-  }); //* categories end
+  });
+  //* categories end
   //! product-search section start */
   //! all-products section start */
   //* pagination start
-
   productsSection.addEventListener('click', function (e) {
     if (e.target.className == 'page-link') {
       e.preventDefault();
       page = e.target.href.split('page=')[1];
       search(page, keyword, filter, category);
     }
-  }); //* pagination end
+  });
+  //* pagination end
   //! all-products section end */
   //! similar-products section start
-
   $('.products-carousel').owlCarousel({
     autoplay: true,
     autoplayTimeout: 3000,
@@ -809,7 +792,8 @@ if (productPage) {
         items: 3
       }
     }
-  }); //! similar-products section end
+  });
+  //! similar-products section end
 }
 })();
 

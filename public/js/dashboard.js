@@ -12,13 +12,15 @@ $.ajaxSetup({
   }
 });
 var html = document.querySelector('html'),
-    modals = html.querySelectorAll('.modal'); //! hide modals start
+  modals = html.querySelectorAll('.modal');
 
+//! hide modals start
 html.addEventListener('click', function (e) {
   modals.forEach(function (modal) {
     modal.classList.add('hidden');
   });
-}); //! hide modals end
+});
+//! hide modals end
 
 window.setPhotoPreview = function (fileChooserEl, previewEl) {
   fileChooserEl.addEventListener('change', function (evt) {
@@ -27,7 +29,6 @@ window.setPhotoPreview = function (fileChooserEl, previewEl) {
     previewEl.style.backgroundColor = 'transparent';
   });
 };
-
 window.setFilePreview = function (fileChooserEl, previewEl) {
   fileChooserEl.addEventListener('change', function (evt) {
     previewEl.textContent = evt.target.value;
@@ -49,12 +50,11 @@ window.setFilePreview = function (fileChooserEl, previewEl) {
   !*** ./resources/js/dashboard/pages/products/index.js ***!
   \********************************************************/
 var productsPage = document.querySelector('.products-page');
-
 if (productsPage) {
   var deleteBtns = productsPage.querySelectorAll('[data-action="delete-product"]'),
-      confirmModal = productsPage.querySelector('.confirm-modal'),
-      confirmInput = confirmModal.querySelector('[name="id"]'); //* confirm-modal start
-
+    confirmModal = productsPage.querySelector('.confirm-modal'),
+    confirmInput = confirmModal.querySelector('[name="id"]');
+  //* confirm-modal start
   deleteBtns.forEach(function (button) {
     button.onclick = function () {
       confirmModal.classList.remove('hidden');
@@ -66,7 +66,8 @@ if (productsPage) {
       confirmModal.classList.add('hidden');
       confirmInput.value = '';
     }
-  }); //* confirm-modal end
+  });
+  //* confirm-modal end
 }
 })();
 
@@ -76,18 +77,17 @@ if (productsPage) {
   !*** ./resources/js/dashboard/pages/products/create.js ***!
   \*********************************************************/
 var productsCreate = document.querySelector('.products-create-page');
-
 if (productsCreate) {
   var editors = document.getElementsByClassName('simditor-textarea'),
-      textareas = []; //change Simditor default locale
-
+    textareas = [];
+  //change Simditor default locale
   Simditor.locale = 'ru-RU';
-
   for (i = 0; i < editors.length; i++) {
     textareas[i] = new Simditor({
       textarea: editors[i],
       toolbarFloatOffset: '60px',
-      upload: {//  url: '/upload/simditor_photo',   //image upload url by server
+      upload: {
+        //  url: '/upload/simditor_photo',   //image upload url by server
         //  params: {
         //     folder: 'news' //used in store folder path
         //  },
@@ -104,7 +104,6 @@ if (productsCreate) {
       toolbarFloat: false
     });
   }
-
   var photoChooserEl = document.querySelector('input[name="photo"]');
   var photoPreviewEl = document.querySelector('.form__photo-preview');
   var ruInstructionChooserEl = document.querySelector('input[name="ru-instruction"]');
@@ -123,20 +122,19 @@ if (productsCreate) {
   !*** ./resources/js/dashboard/pages/products/update.js ***!
   \*********************************************************/
 var productsUpdate = document.querySelector('.products-update-page');
-
 if (productsUpdate) {
   var editors = document.getElementsByClassName('simditor-textarea'),
-      textareas = [],
-      deleteBtn = productsUpdate.querySelector('[data-action="delete-product"]'),
-      confirmModal = productsUpdate.querySelector('.confirm-modal'); //change Simditor default locale
-
+    textareas = [],
+    deleteBtn = productsUpdate.querySelector('[data-action="delete-product"]'),
+    confirmModal = productsUpdate.querySelector('.confirm-modal');
+  //change Simditor default locale
   Simditor.locale = 'ru-RU';
-
   for (i = 0; i < editors.length; i++) {
     textareas[i] = new Simditor({
       textarea: editors[i],
       toolbarFloatOffset: '60px',
-      upload: {//  url: '/upload/simditor_photo',   //image upload url by server
+      upload: {
+        //  url: '/upload/simditor_photo',   //image upload url by server
         //  params: {
         //     folder: 'news' //used in store folder path
         //  },
@@ -153,7 +151,6 @@ if (productsUpdate) {
       toolbarFloat: false
     });
   }
-
   var photoChooserEl = document.querySelector('input[name="photo"]');
   var photoPreviewEl = document.querySelector('.form__photo-preview');
   var ruInstructionChooserEl = document.querySelector('input[name="ru-instruction"]');
@@ -184,19 +181,18 @@ if (productsUpdate) {
   !*** ./resources/js/dashboard/pages/products/categories.js ***!
   \*************************************************************/
 var productsCategories = document.querySelector('.products-categories-page');
-
 if (productsCategories) {
   var createBtn = document.querySelector('[data-action="create-category"]'),
-      updateBtns = productsCategories.querySelectorAll('[data-action="update-category"]'),
-      deleteBtns = productsCategories.querySelectorAll('[data-action="delete-category"]'),
-      createModal = productsCategories.querySelector('.create-modal'),
-      updateModal = productsCategories.querySelector('.update-modal'),
-      confirmModal = productsCategories.querySelector('.confirm-modal'),
-      updateInput = updateModal.querySelector('[name="id"]'),
-      ruTitleInput = updateModal.querySelector('[name="ru-title"]'),
-      enTitleInput = updateModal.querySelector('[name="en-title"]'),
-      confirmInput = confirmModal.querySelector('[name="id"]'); //* confirm-modal start
-
+    updateBtns = productsCategories.querySelectorAll('[data-action="update-category"]'),
+    deleteBtns = productsCategories.querySelectorAll('[data-action="delete-category"]'),
+    createModal = productsCategories.querySelector('.create-modal'),
+    updateModal = productsCategories.querySelector('.update-modal'),
+    confirmModal = productsCategories.querySelector('.confirm-modal'),
+    updateInput = updateModal.querySelector('[name="id"]'),
+    ruTitleInput = updateModal.querySelector('[name="ru-title"]'),
+    enTitleInput = updateModal.querySelector('[name="en-title"]'),
+    confirmInput = confirmModal.querySelector('[name="id"]');
+  //* confirm-modal start
   deleteBtns.forEach(function (button) {
     button.onclick = function () {
       confirmModal.classList.remove('hidden');
@@ -208,20 +204,19 @@ if (productsCategories) {
       confirmModal.classList.add('hidden');
       confirmInput.value = '';
     }
-  }); //* confirm-modal end
+  });
+  //* confirm-modal end
   //* confirm-modal start
-
   createBtn.onclick = function () {
     createModal.classList.remove('hidden');
   };
-
   createModal.addEventListener('click', function (e) {
     if (e.target.className == 'create-modal' || e.target.dataset.action == 'cancel') {
       createModal.classList.add('hidden');
     }
-  }); //* confirm-modal end
+  });
+  //* confirm-modal end
   //* confirm-modal start
-
   updateBtns.forEach(function (button) {
     button.onclick = function () {
       updateModal.classList.remove('hidden');
@@ -235,7 +230,8 @@ if (productsCategories) {
       updateModal.classList.add('hidden');
       updateInput.value = '';
     }
-  }); //* confirm-modal end
+  });
+  //* confirm-modal end
 }
 })();
 
@@ -272,18 +268,17 @@ if (newsPage) {
   !*** ./resources/js/dashboard/pages/news/create.js ***!
   \*****************************************************/
 var newsCreate = document.querySelector('.news-create-page');
-
 if (newsCreate) {
   var editors = document.getElementsByClassName('simditor-textarea'),
-      textareas = []; //change Simditor default locale
-
+    textareas = [];
+  //change Simditor default locale
   Simditor.locale = 'ru-RU';
-
   for (i = 0; i < editors.length; i++) {
     textareas[i] = new Simditor({
       textarea: editors[i],
       toolbarFloatOffset: '60px',
-      upload: {//  url: '/upload/simditor_photo',   //image upload url by server
+      upload: {
+        //  url: '/upload/simditor_photo',   //image upload url by server
         //  params: {
         //     folder: 'news' //used in store folder path
         //  },
@@ -300,7 +295,6 @@ if (newsCreate) {
       toolbarFloat: false
     });
   }
-
   var photoChooserEl = document.querySelector('input[name="photo"]');
   var photoPreviewEl = document.querySelector('.form__photo-preview');
   window.setPhotoPreview(photoChooserEl, photoPreviewEl);
@@ -313,18 +307,17 @@ if (newsCreate) {
   !*** ./resources/js/dashboard/pages/news/update.js ***!
   \*****************************************************/
 var newsUpdate = document.querySelector('.news-update-page');
-
 if (newsUpdate) {
   var editors = document.getElementsByClassName('simditor-textarea'),
-      textareas = []; //change Simditor default locale
-
+    textareas = [];
+  //change Simditor default locale
   Simditor.locale = 'ru-RU';
-
   for (i = 0; i < editors.length; i++) {
     textareas[i] = new Simditor({
       textarea: editors[i],
       toolbarFloatOffset: '60px',
-      upload: {//  url: '/upload/simditor_photo',   //image upload url by server
+      upload: {
+        //  url: '/upload/simditor_photo',   //image upload url by server
         //  params: {
         //     folder: 'news' //used in store folder path
         //  },
@@ -341,7 +334,6 @@ if (newsUpdate) {
       toolbarFloat: false
     });
   }
-
   var photoChooserEl = document.querySelector('input[name="photo"]');
   var photoPreviewEl = document.querySelector('.form__photo-preview');
   window.setPhotoPreview(photoChooserEl, photoPreviewEl);
